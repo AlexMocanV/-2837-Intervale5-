@@ -1,0 +1,39 @@
+#include <fstream>
+using namespace std;
+
+ifstream cin("intervale5.in");
+ofstream cout("intervale5.out");
+
+bool f[101]={false};
+
+int x,maxi=0,mini=10012;
+
+bool ok=true;
+
+int main()
+{
+    while(cin>>x)
+    {
+        f[x]=true;
+        maxi=max(maxi,x);
+        mini=min(mini,x);
+    }
+    int poz=mini;
+    for(int i=mini+1;i<=maxi;i++)
+    {
+        if(f[i]!=0)
+        {
+            if(i-poz>=2)
+            {
+                cout<<poz<<" "<<i<<"\n";
+                ok=false;
+            }
+            poz=i;
+        }
+    }
+    if(ok==true)
+    {
+        cout<<"nu exista";
+    }
+    return 0;
+}
